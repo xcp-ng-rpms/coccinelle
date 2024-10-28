@@ -1,6 +1,6 @@
 Name:           coccinelle
 Version:        1.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Semantic patching for Linux (spatch)
 License:        GPL-2.0-only
 URL:            https://github.com/coccinelle/coccinelle
@@ -59,5 +59,8 @@ make
 %{_datadir}/bash-completion/completions/spatch
 
 %changelog
+* Mon Oct 28 2024 Ronan Abhamon <ronan.abhamon@vates.tech> - 1.2-2
+- Rebuild to sync with ocaml-4.14.2
+
 * Mon Jul 15 2024 Ronan Abhamon <ronan.abhamon@vates.fr> - 1.2-1
 - Initial package
