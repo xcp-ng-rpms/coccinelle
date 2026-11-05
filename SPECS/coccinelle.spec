@@ -1,6 +1,6 @@
 Name:           coccinelle
 Version:        1.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Semantic patching for Linux (spatch)
 License:        GPL-2.0-only
 URL:            https://github.com/coccinelle/coccinelle
@@ -35,7 +35,7 @@ desired matches and transformations in C code.
 
 %build
 ./autogen
-./configure --prefix %{_exec_prefix}
+%configure
 make
 
 %install
@@ -48,17 +48,21 @@ make
 %doc %{_mandir}/man3/Coccilib.3cocci.gz
 %{_bindir}/spatch
 %{_bindir}/spgen
-/usr/lib/%{name}/dllpyml_stubs.so
-/usr/lib/%{name}/ocaml/*.cmi
-/usr/lib/%{name}/ocaml/*.cmx
-/usr/lib/%{name}/python/coccilib/*.py
-/usr/lib/%{name}/python/coccilib/*.pyc
-/usr/lib/%{name}/python/coccilib/*.pyo
-/usr/lib/%{name}/standard.h
-/usr/lib/%{name}/standard.iso
+%{_libdir}/%{name}/dllpyml_stubs.so
+%{_libdir}/%{name}/ocaml/*.cmi
+%{_libdir}/%{name}/ocaml/*.cmx
+%{_libdir}/%{name}/python/coccilib/*.py
+%{_libdir}/%{name}/python/coccilib/*.pyc
+%{_libdir}/%{name}/python/coccilib/*.pyo
+%{_libdir}/%{name}/standard.h
+%{_libdir}/%{name}/standard.iso
 %{_datadir}/bash-completion/completions/spatch
 
 %changelog
+* Mon Nov 02 2026 Alexandre Sollier <alexandre.sollier@vates.tech> - 1.2-3
+- Rebuild to sync with ocaml-4.14.4
+- Use macros to invoke `configure` and list `/usr/lib` files
+
 * Mon Oct 28 2024 Ronan Abhamon <ronan.abhamon@vates.tech> - 1.2-2
 - Rebuild to sync with ocaml-4.14.2
 
